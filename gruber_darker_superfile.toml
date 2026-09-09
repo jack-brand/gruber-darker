@@ -7,13 +7,15 @@
 # This theme was created by: https://github.com/jack-brand
 
 # This contains the theme config file for superfile!
-# For more details see: https://superfile.dev/configure/custom-theme/
+# For more details see:
+# https://superfile.dev/configure/custom-theme/
 
 ########################################################
 #               Code Syntax Highlighting               #
 ########################################################
 
-# Find one you like at: https://github.com/alecthomas/chroma/blob/master/styles.
+# Find one you like at:
+# https://github.com/alecthomas/chroma/blob/master/styles.
 
 code_syntax_highlight = "algol_nu"
 
