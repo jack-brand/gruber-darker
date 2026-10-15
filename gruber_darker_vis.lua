@@ -2,26 +2,56 @@
 
 local l = vis.lexers
 
-local black = '#181818'
-local red = '#f43841'
-local green = '#73c936'
-local yellow = '#ffdd33'
-local blue = '#96a6c8'
-local magenta = '#9e95c7'
-local cyan = '#95a99f'
-local white = '#e4e4ef'
+local tput_colors = io.popen('tput colors 2>/dev/null')
+local colors_count = 0
 
--- local brightblack = '#453d41'
--- local brightred = '#ff4f58'
--- local brightwhite = '#f5f5f5'
+if tput_colors then
+    colors_count = tonumber(tput_colors:read('*a')) or 0
+    tpu_colors:close()
+end
 
-local darkgrey = '#282828'
-local lightgrey = '#b6b6b6'
-local darkmaroon = '#453941'
-local lightmaroon = '#564751'
-local brown = '#cc8c3c'
-local darkyellow = '#423d21'
-local lightyellow = '#eded5b'
+local black, red, green, yellow, blue, magenta, cyan white
+local darkgrey, lightgrey, darkmaroon, lightmaroon, brown, darkyellow, lightyellow
+
+if colors_count >= 256 then
+    black = '#181818'
+    red = '#f43841'
+    green = '#73c936'
+    yellow = '#ffdd33'
+    blue = '#96a6c8'
+    magenta = '#9e95c7'
+    cyan = '#95a99f'
+    white = '#e4e4ef'
+    -- brightblack = '#453d41'
+    -- brightred = '#ff4f58'
+    -- brightwhite = '#f5f5f5'
+    darkgrey = '#282828'
+    lightgrey = '#b6b6b6'
+    darkmaroon = '#453941'
+    lightmaroon = '#564751'
+    brown = '#cc8c3c'
+    darkyellow = '#423d21'
+    lightyellow = '#eded5b'
+else
+    black = 'black'
+    red = 'red'
+    green = 'green'
+    yellow = 'yellow'
+    blue = 'blue'
+    magenta = 'magenta'
+    cyan = 'cyan'
+    white = 'white'
+    -- brightblack = 'black'
+    -- brightred = 'red'
+    -- brightwhite = 'white'
+    darkgrey = 'black'
+    lightgrey = 'white'
+    darkmaroon = 'white'
+    lightmaroon = 'white'
+    brown = 'white'
+    darkyellow = 'blue'
+    lightyellow = 'yellow'
+end
 
 l.STYLE_DEFAULT = 'back:' .. black .. ',fore:' .. white
 l.STYLE_NOTHING = ''
