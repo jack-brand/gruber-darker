@@ -7,7 +7,7 @@ local colors_count = 0
 
 if tput_colors then
     colors_count = tonumber(tput_colors:read('*a')) or 0
-    tpu_colors:close()
+    tput_colors:close()
 end
 
 local black, red, green, yellow, blue, magenta, cyan, white
