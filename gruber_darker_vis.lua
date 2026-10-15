@@ -10,7 +10,7 @@ if tput_colors then
     tpu_colors:close()
 end
 
-local black, red, green, yellow, blue, magenta, cyan white
+local black, red, green, yellow, blue, magenta, cyan, white
 local darkgrey, lightgrey, darkmaroon, lightmaroon, brown, darkyellow, lightyellow
 
 if colors_count >= 256 then
