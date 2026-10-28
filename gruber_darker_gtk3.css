@@ -1,0 +1,102 @@
+/* Author: Jack Brand <74jdvb@gmail.com> <https://github.com/jack-brand> */
+/* Credit: <https://gitlab.com/sshish/blackline> */
+@define-color brightblack #453d41;
+@define-color cyan #95a99f;
+@define-color window-bg-color #181818;
+@define-color window-fg-color #e4e4ef;
+@define-color view-bg-color #181818;
+@define-color view-fg-color #e4e4ef;
+@define-color headerbar-bg-color #181818;
+@define-color headerbar-fg-color #e4e4ef;
+@define-color headerbar-backdrop-color #181818;
+@define-color headerbar-shade-color @brightblack;
+@define-color headerbar-darker-shade-color @brightblack;
+@define-color sidebar-bg-color #181818;
+@define-color sidebar-fg-color #e4e4ef;
+@define-color sidebar-backdrop-color #181818;
+@define-color sidebar-border-color @brightblack;
+@define-color secondary-sidebar-bg-color #181818;
+@define-color secondary-sidebar-fg-color #e4e4ef;
+@define-color secondary-sidebar-backdrop-color #181818;
+@define-color secondary-sidebar-border-color @brightblack;
+@define-color card-bg-color #181818;
+@define-color card-fg-color #e4e4ef;
+@define-color dialog-bg-color #181818;
+@define-color dialog-fg-color #e4e4ef;
+@define-color popover-bg-color #181818;
+@define-color popover-fg-color #e4e4ef;
+@define-color thumbnail-bg-color #181818;
+@define-color thumbnail-fg-color #e4e4ef;
+
+window {
+	background-color: @window_bg_color;
+	color: @window_fg_color;
+}
+
+/* An inset outline avoids resizing windows or their contents. */
+window.csd:not(.fullscreen) {
+  border: 1px solid @cyan;
+  border-offset: -1px;
+}
+
+/* Maximized windows do not need an outer border at the screen edges. */
+window.csd.maximized {
+  border: none;
+}
+
+/* Inactive windows recede to the same gray as internal separators. */
+window.csd:backdrop {
+  border-color: @brightblack;
+}
+
+/* User-requested design: replace Adwaita's elevated card and settings-group backgrounds with the same black as their surroundings, encircled by gray lines. */
+/* Inset outlines preserve sizing and avoid clipping on separate list rows. */
+.card,
+list.boxed-list,
+list.boxed-list-separate > row {
+  box-shadow: inset 0 0 0 1px @brightblack;
+}
+
+/* Give black popup menus a visible edge, including their pointing arrow. */
+popover {
+	background-color: @window_bg_color;
+	color: @window_fg_color;
+}
+
+popover.menu {
+  border-color: @brightblack;
+}
+
+separator {
+  background-color: @brightblack;
+}
+
+/* Keep pane resize handles wide enough to grab; draw only one line. */
+paned > separator {
+  background: none;
+}
+
+paned.horizontal > separator {
+  box-shadow: inset 1px 0 @brightblack;
+}
+
+paned.vertical > separator {
+  box-shadow: inset 0 1px @brightblack;
+}
+
+/* Compact chrome without shrinking text, icons, or content-area controls. */
+headerbar {
+  background-color: @window_bg_color;
+  color: @window_fg_color;
+  min-height: 34px;
+}
+
+headerbar button {
+  min-height: 24px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+headerbar .titlebutton image {
+  padding: 2px;
+}
