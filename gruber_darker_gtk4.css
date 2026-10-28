@@ -1,0 +1,109 @@
+/* Author: Jack Brand <74jdvb@gmail.com> <https://github.com/jack-brand> */
+/* Credit: <https://gitlab.com/sshish/blackline> */
+:root {
+  --brightblack: #453d41;
+  --cyan: #95a99f;
+  --window-bg-color: #181818;
+  --window-fg-color: #e4e4ef;
+  --view-bg-color: #181818;
+  --view-fg-color: #e4e4ef;
+  --headerbar-bg-color: #181818;
+  --headerbar-fg-color: #e4e4ef;
+  --headerbar-backdrop-color: #181818;
+  --headerbar-shade-color: var(--brightblack);
+  --headerbar-darker-shade-color: var(--brightblack);
+  --sidebar-bg-color: #181818;
+  --sidebar-fg-color: #e4e4ef;
+  --sidebar-backdrop-color: #181818;
+  --sidebar-border-color: var(--brightblack);
+  --secondary-sidebar-bg-color: #181818;
+  --secondary-sidebar-fg-color: #e4e4ef;
+  --secondary-sidebar-backdrop-color: #181818;
+  --secondary-sidebar-border-color: var(--brightblack);
+  --card-bg-color: #181818;
+  --card-fg-color: #e4e4ef;
+  --dialog-bg-color: #181818;
+  --dialog-fg-color: #e4e4ef;
+  --popover-bg-color: #181818;
+  --popover-fg-color: #e4e4ef;
+  --thumbnail-bg-color: #181818;
+  --thumbnail-fg-color: #e4e4ef;
+
+  /* Keep semantic colors readable even when an app requests light mode. */
+  --standalone-color-oklab: max(l, 0.85) a b;
+}
+
+/* An inset outline avoids resizing windows or their contents. */
+window.csd:not(.fullscreen) {
+  outline: 1px solid var(--cyan);
+  outline-offset: -1px;
+}
+
+/* Maximized windows do not need an outer border at the screen edges. */
+window.csd.maximized {
+  outline: none;
+}
+
+/* Inactive windows recede to the same gray as internal separators. */
+window.csd:backdrop {
+  --cyan: var(--brightblack);
+}
+
+/* User-requested design: replace Adwaita's elevated card and settings-group backgrounds with the same black as their surroundings, encircled by gray lines. */
+/* Inset outlines preserve sizing and avoid clipping on separate list rows. */
+.card,
+list.boxed-list,
+list.boxed-list-separate > row {
+  box-shadow: inset 0 0 0 1px var(--brightblack);
+}
+
+/* Give black popup menus a visible edge, including their pointing arrow. */
+popover.menu > contents,
+popover.menu > arrow {
+  border-color: var(--brightblack);
+}
+
+/* Replace blurred toolbar shadows with one crisp section boundary. */
+toolbarview > .top-bar {
+  box-shadow: 0 1px var(--brightblack);
+}
+
+toolbarview > .bottom-bar {
+  box-shadow: 0 -1px var(--brightblack);
+}
+
+separator {
+  background-color: var(--brightblack);
+}
+
+/* Keep pane resize handles wide enough to grab; draw only one line. */
+paned > separator {
+  background: none;
+}
+
+paned.horizontal > separator {
+  box-shadow: inset 1px 0 var(--brightblack);
+}
+
+paned.vertical > separator {
+  box-shadow: inset 0 1px var(--brightblack);
+}
+
+/* Compact chrome without shrinking text, icons, or content-area controls. */
+headerbar {
+  min-height: 34px;
+}
+
+headerbar > windowhandle > box {
+  padding: 2px 6px;
+}
+
+headerbar button {
+  min-height: 24px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+windowcontrols > button > image {
+  padding: 2px;
+}
